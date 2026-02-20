@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agents IA de A à Z – Guide 2025/2026</title>
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #e2e8f0;
+      --text-light: #94a3b8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      padding: 4rem 1rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid #334155;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.8rem;
+      color: white;
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      color: var(--text-light);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    nav {
+      background: var(--card);
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #334155;
+      box-shadow: 0 4px 6px -6px rgba(0,0,0,0.5);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 9999px;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      border: 1px solid #334155;
+      scroll-margin-top: 100px;
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+      font-size: 2rem;
+      border-left: 5px solid var(--primary);
+      padding-left: 1rem;
+    }
+
+    h3 {
+      color: #cbd5e1;
+      margin: 1.8rem 0 1rem;
+      font-size: 1.4rem;
+    }
+
+    .level {
+      display: inline-block;
+      background: rgba(99,102,241,0.15);
+      color: var(--primary);
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    pre {
+      background: #0f172a;
+      padding: 1.4rem;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: 0.95rem;
+      border: 1px solid #334155;
+      margin: 1.2rem 0;
+    }
+
+    code {
+      font-family: 'Consolas', 'Monaco', monospace;
+    }
+
+    .highlight {
+      color: #a5b4fc;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      color: var(--text-light);
+      border-top: 1px solid #334155;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      nav ul { flex-direction: column; align-items: center; }
+      section { padding: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Créer des Agents IA</h1>
+  <p class="subtitle">Guide pratique de A à Z – Niveau débutant → avancé (2025/2026)</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#intro">Introduction</a></li>
+    <li><a href="#etape1">Étape 1</a></li>
+    <li><a href="#etape2">Étape 2</a></li>
+    <li><a href="#etape3">Étape 3</a></li>
+    <li><a href="#etape4">Étape 4</a></li>
+    <li><a href="#etape5">Étape 5+</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <section id="intro">
+    <h2>Introduction – Qu’est-ce qu’un agent IA ?</h2>
+    <p class="level">Niveau ★☆☆☆☆</p>
+    <p>Un agent IA moderne = <strong>LLM + raisonnement + outils + boucle de contrôle</strong></p>
+    <p>Les patterns les plus utilisés en 2025/2026 :</p>
+    <ul>
+      <li>ReAct (Reason + Act)</li>
+      <li>Plan-and-Execute</li>
+      <li>Graph-based (LangGraph)</li>
+      <li>Multi-agents (CrewAI, AutoGen)</li>
+    </ul>
+    <p>Objectif de ce guide : aller du premier appel API au déploiement d’une équipe d’agents.</p>
+  </section>
+
+  <section id="etape1">
+    <h2>Étape 1 – Agent ReAct ultra-basique</h2>
+    <p class="level">Niveau ★★☆☆☆</p>
+    <p>Technos : Python + OpenAI (ou Gemini / Ollama)</p>
+    <pre><code># agent_simple.py
+from openai import OpenAI
+client = OpenAI()
+
+def obtenir_meteo(ville):
+    <span class="highlight">return f"{ville} : 22°C, ensoleillé (simulation)"</span>
+
+question = "Météo à Paris ?"
+
+messages = [{"role": "user", "content": question}]
+
+resp = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=messages,
+    tools=[{
+        "type": "function",
+        "function": {
+            "name": "obtenir_meteo",
+            "parameters": {
+                "type": "object",
+                "properties": {"ville": {"type": "string"}},
+                "required": ["ville"]
+            }
+        }
+    }]
+)
+
+<span class="highlight"># ← ici commence la boucle ReAct</span>
+</code></pre>
+    <p><strong>À retenir :</strong> LLM → décide d’appeler un outil → on exécute → on renvoie le résultat</p>
+  </section>
+
+  <section id="etape2">
+    <h2>Étape 2 – Plusieurs outils + boucle complète</h2>
+    <p class="level">Niveau ★★☆☆☆</p>
+    <p>Ajoute : calculatrice, recherche web simulée, wikipedia-like…</p>
+    <pre><code>tools = {
+    "obtenir_meteo": ...,
+    "calculer": lambda expr: str(eval(expr)),
+    "rechercher": lambda q: f"Résultat simulé pour '{q}'"
+}
+
+<span class="highlight">while not "final_answer" in reponse:</span>
+    # appel LLM
+    # si tool → exécute → append résultat
+    # sinon → final answer
+</code></pre>
+  </section>
+
+  <section id="etape3">
+    <h2>Étape 3 – Mémoire & état</h2>
+    <p class="level">Niveau ★★★☆☆</p>
+    <p>Options courantes :</p>
+    <ul>
+      <li>liste Python (conversation history)</li>
+      <li>LangChain ConversationBufferMemory</li>
+      <li>base vectorielle (pour RAG long-terme)</li>
+    </ul>
+  </section>
+
+  <section id="etape4">
+    <h2>Étape 4 – Contrôle structuré (LangGraph)</h2>
+    <p class="level">Niveau ★★★★☆</p>
+    <p>→ remplace la boucle while par un graphe explicite</p>
+    <ul>
+      <li>nœuds = actions / décisions</li>
+      <li>arêtes = conditions</li>
+    </ul>
+    <p>→ Meilleure lisibilité, debug, cycles, human-in-the-loop</p>
+  </section>
+
+  <section id="etape5">
+    <h2>Étape 5+ – Vers le niveau production</h2>
+    <p class="level">Niveau ★★★★★</p>
+    <ul>
+      <li>Multi-agents (CrewAI, LangGraph teams)</li>
+      <li>Exécution code sécurisée (E2B, Docker sandbox)</li>
+      <li>Observabilité (LangSmith, Phoenix)</li>
+      <li>Déploiement (FastAPI + queue, Vercel, Fly.io)</li>
+      <li>LLM local & open-source (Llama 3.1, Qwen 2.5, DeepSeek)</li>
+    </ul>
+    <p>Prochain objectif réaliste 2026 : agent autonome 7j/7 avec supervision minimale.</p>
+  </section>
+
+</main>
+
+<footer>
+  <p>Guide créé pour apprendre les agents IA modernes • 2025–2026<br>
+  Copie / modifie / partage librement • AMIN 🚀</p>
+</footer>
+
+</body>
+</html>
